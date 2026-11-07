@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vietjet Travel - Đặt Vé Máy Bay & Tour Du Lịch Giá Tốt</title>
+  <meta name="description" content="Trang web đặt vé máy bay và tour du lịch Vietjet Travel Prototype. Tìm kiếm vé máy bay nội địa, quốc tế và các tour du lịch trọn gói hấp dẫn.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- SQLite WASM (SQL.js) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.12.0/sql-wasm.js"></script>
+</head>
+<body>
+  <!-- Header Container -->
+  <div id="site-header-container"></div>
+
+  <main>
+    <!-- Hero Banner with Flight Search Form -->
+    <section style="background: linear-gradient(135deg, #EE1D23 0%, #D71920 60%, #991B1B 100%); color: #FFFFFF; padding: 60px 0 100px 0;">
+      <div class="container" style="text-align: center; max-width: 900px;">
+        <span class="badge" style="background: rgba(255,255,255,0.2); color: #FFFFFF; margin-bottom: 12px; font-size: 13px;">
+          ✈️ Bay Khắp Việt Nam & Thế Giới
+        </span>
+        <h1 style="font-size: 40px; font-weight: 900; line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.5px;">
+          Khám Phá Điểm Đến Mơ Ước Cùng Vietjet Travel
+        </h1>
+        <p style="font-size: 18px; opacity: 0.9; line-height: 1.6; margin-bottom: 24px;">
+          Hàng trăm chuyến bay giá tốt và 8 tour du lịch trải nghiệm hấp dẫn đang đón chờ bạn.
+        </p>
+      </div>
+    </section>
+
+    <!-- Search Panel Section -->
+    <div class="container">
+      <div class="search-panel">
+        <form id="flight-search-form">
+          <!-- Trip Type Radios -->
+          <div class="search-tabs">
+            <div class="search-radio-group">
+              <label class="search-radio-label">
+                <input type="radio" name="trip_type" value="oneway" checked>
+                <span>Một chiều</span>
+              </label>
+              <label class="search-radio-label">
+                <input type="radio" name="trip_type" value="roundtrip">
+                <span>Khứ hồi</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Search Inputs Grid -->
+          <div class="search-grid">
+            <!-- Origin -->
+            <div class="form-field">
+              <label class="form-label" for="origin-select">
+                <span>🛫 Điểm đi</span>
+                <span class="required">*</span>
+              </label>
+              <select id="origin-select" class="form-select" required>
+                <option value="SGN" selected>TP. Hồ Chí Minh (SGN)</option>
+                <option value="HAN">Hà Nội (HAN)</option>
+                <option value="DAD">Đà Nẵng (DAD)</option>
+                <option value="PQC">Phú Quốc (PQC)</option>
+                <option value="CXR">Nha Trang (CXR)</option>
+                <option value="SIN">Singapore (SIN)</option>
+              </select>
+            </div>
+
+            <!-- Destination -->
+            <div class="form-field">
+              <label class="form-label" for="dest-select">
+                <span>🛬 Điểm đến</span>
+                <span class="required">*</span>
+              </label>
+              <select id="dest-select" class="form-select" required>
+                <option value="HAN" selected>Hà Nội (HAN)</option>
+                <option value="SGN">TP. Hồ Chí Minh (SGN)</option>
+                <option value="DAD">Đà Nẵng (DAD)</option>
+                <option value="PQC">Phú Quốc (PQC)</option>
+                <option value="CXR">Nha Trang (CXR)</option>
+                <option value="SIN">Singapore (SIN)</option>
+              </select>
+            </div>
+
+            <!-- Departure Date -->
+            <div class="form-field">
+              <label class="form-label" for="departure-date">
+                <span>📅 Ngày khởi hành</span>
+                <span class="required">*</span>
+              </label>
+              <input type="date" id="departure-date" class="form-control" required>
+            </div>
+
+            <!-- Return Date (Conditionally visible) -->
+            <div class="form-field" id="return-date-container" style="display: none;">
+              <label class="form-label" for="return-date">
+                <span>📅 Ngày về</span>
+                <span class="required">*</span>
+              </label>
+              <input type="date" id="return-date" class="form-control">
+            </div>
+
+            <!-- Passenger Count & Cabin -->
+            <div class="form-field">
+              <label class="form-label" for="passengers-input">
+                <span>👤 Hành khách</span>
+              </label>
+              <select id="passengers-input" class="form-select">
+                <option value="1" selected>1 Người lớn</option>
+                <option value="2">2 Người lớn</option>
+                <option value="3">3 Người lớn</option>
+                <option value="4">4 Người lớn</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="cabin-select">
+                <span>🏷 Hạng vé</span>
+              </label>
+              <select id="cabin-select" class="form-select">
+                <option value="" selected>Tất cả các hạng</option>
+                <option value="economy">Phổ thông (Eco)</option>
+                <option value="business">Thương gia (Business)</option>
+              </select>
+            </div>
+
+            <!-- Search Button -->
+            <div>
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; height: 42px;">
+                🔍 Tìm chuyến bay
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Featured Tours Section (Exactly 8 Tours) -->
+    <section class="page-section">
+      <div class="container">
+        <div class="page-section-header">
+          <div>
+            <h2 class="section-title">Tour Du Lịch Trải Nghiệm Nổi Bật</h2>
+            <p class="section-subtitle">8 hành trình chọn lọc với mức giá ưu đãi, khách sạn sang trọng và dịch vụ trọn gói.</p>
+          </div>
+          <a href="tours.html" class="btn btn-secondary btn-sm">Xem tất cả tour →</a>
+        </div>
+
+        <div id="featured-tours-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--spacing-lg);">
+          <!-- Dynamic loaded from SQLite db.db -->
+          <div class="empty-desc">Đang tải dữ liệu từ SQLite...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Airline Brands Section -->
+    <section class="page-section" style="background-color: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+      <div class="container">
+        <div class="page-section-header" style="text-align: center; display: block; margin-bottom: var(--spacing-xl);">
+          <h2 class="section-title">Hãng Hàng Không Đối Tác</h2>
+          <p class="section-subtitle">Lựa chọn chuyến bay từ các hãng hàng không uy tín hàng đầu khu vực.</p>
+        </div>
+
+        <div id="airline-brands-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--spacing-lg);">
+          <!-- Dynamic loaded from SQLite db.db -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Props Section -->
+    <section class="page-section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--spacing-xl);">
+          <div class="card" style="padding: var(--spacing-xl); text-align: center;">
+            <div style="font-size: 36px; margin-bottom: 12px;">⚡</div>
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Cơ Sở Dữ Liệu SQLite Trực Tiếp</h3>
+            <p style="font-size: 14px; color: var(--color-muted); line-height: 1.6;">
+              Tích hợp cơ sở dữ liệu SQLite trong trình duyệt (SQLite WASM) với khả năng lưu trữ bền vững qua IndexedDB.
+            </p>
+          </div>
+
+          <div class="card" style="padding: var(--spacing-xl); text-align: center;">
+            <div style="font-size: 36px; margin-bottom: 12px;">🛡️</div>
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">An Toàn & Minh Bạch</h3>
+            <p style="font-size: 14px; color: var(--color-muted); line-height: 1.6;">
+              Bản thử nghiệm rõ ràng, không thu thập thẻ tín dụng hay mật khẩu người dùng, thông tin giá cả minh bạch.
+            </p>
+          </div>
+
+          <div class="card" style="padding: var(--spacing-xl); text-align: center;">
+            <div style="font-size: 36px; margin-bottom: 12px;">📱</div>
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Giao Diện Đáp Ứng Chuẩn Mực</h3>
+            <p style="font-size: 14px; color: var(--color-muted); line-height: 1.6;">
+              Tối ưu trải nghiệm hoàn hảo trên mọi thiết bị: máy tính bàn, máy tính bảng và điện thoại di động.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Container -->
+  <div id="site-footer-container"></div>
+
+  <!-- Page Script -->
+  <script type="module" src="js/pages/home.js"></script>
+</body>
+</html>

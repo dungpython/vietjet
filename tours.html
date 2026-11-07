@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khám Phá Tour Du Lịch - Vietjet Travel</title>
+  <meta name="description" content="Danh sách các tour du lịch trọn gói hấp dẫn tại Đà Nẵng, Phú Quốc, Hạ Long, Sapa, Nha Trang, Đà Lạt, Singapore.">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- SQLite WASM (SQL.js) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.12.0/sql-wasm.js"></script>
+</head>
+<body>
+  <!-- Header Container -->
+  <div id="site-header-container"></div>
+
+  <main class="page-section">
+    <div class="container">
+      <div class="listing-layout">
+        <!-- Sidebar Filters -->
+        <aside class="filter-sidebar">
+          <div class="filter-header">
+            <h3 style="font-size: 18px; font-weight: 800; margin: 0;">Lọc tour du lịch</h3>
+            <a href="javascript:void(0)" id="clear-tour-filters" style="font-size: 13px; color: var(--color-primary); font-weight: 600;">Xóa lọc</a>
+          </div>
+
+          <!-- Sort Filter -->
+          <div class="filter-group">
+            <div class="filter-title">Sắp xếp giá tour</div>
+            <select id="tour-sort-select" class="form-select">
+              <option value="">Tour nổi bật nhất</option>
+              <option value="price_asc">Giá: Thấp đến Cao</option>
+              <option value="price_desc">Giá: Cao đến Thấp</option>
+            </select>
+          </div>
+
+          <!-- Destination Filter -->
+          <div class="filter-group">
+            <div class="filter-title">Điểm đến hấp dẫn</div>
+            <select id="tour-dest-filter" class="form-select">
+              <option value="">Tất cả điểm đến</option>
+              <option value="Đà Nẵng">Đà Nẵng - Hội An</option>
+              <option value="Phú Quốc">Đảo ngọc Phú Quốc</option>
+              <option value="Hạ Long">Vịnh Hạ Long</option>
+              <option value="Sapa">Sapa - Fansipan</option>
+              <option value="Nha Trang">Nha Trang</option>
+              <option value="Đà Lạt">Đà Lạt</option>
+              <option value="Singapore">Singapore</option>
+              <option value="Quảng Bình">Quảng Bình</option>
+            </select>
+          </div>
+
+          <!-- Duration Filter -->
+          <div class="filter-group">
+            <div class="filter-title">Thời lượng chuyến đi</div>
+            <div class="filter-option">
+              <label>
+                <input type="checkbox" name="duration_filter" value="3">
+                <span>3 ngày 2 đêm</span>
+              </label>
+            </div>
+            <div class="filter-option">
+              <label>
+                <input type="checkbox" name="duration_filter" value="4">
+                <span>4 ngày 3 đêm</span>
+              </label>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right Content: Tour Cards -->
+        <section>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg); background: var(--color-surface); padding: var(--spacing-md) var(--spacing-lg); border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+            <div>
+              <h1 style="font-size: 20px; font-weight: 800; margin: 0;">Danh sách Tour trọn gói</h1>
+              <div style="font-size: 13px; color: var(--color-muted); margin-top: 2px;">Trải nghiệm dịch vụ du lịch hoàn hảo kết hợp vé máy bay</div>
+            </div>
+            <span class="badge badge-green" id="tours-count-badge">0 tour du lịch</span>
+          </div>
+
+          <!-- Tours Grid Container -->
+          <div id="tours-results-container">
+            <!-- Dynamically populated from SQLite -->
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Container -->
+  <div id="site-footer-container"></div>
+
+  <!-- Page Script -->
+  <script type="module" src="js/pages/tours.js"></script>
+</body>
+</html>

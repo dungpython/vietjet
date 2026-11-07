@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tìm Kiếm Chuyến Bay - Vietjet Travel</title>
+  <meta name="description" content="Danh sách kết quả tìm kiếm chuyến bay từ Vietjet Air, Vietnam Airlines, Bamboo Airways và Singapore Airlines.">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- SQLite WASM (SQL.js) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.12.0/sql-wasm.js"></script>
+</head>
+<body>
+  <!-- Header Container -->
+  <div id="site-header-container"></div>
+
+  <main class="page-section">
+    <div class="container">
+      <div class="listing-layout">
+        <!-- Sidebar Filters -->
+        <aside class="filter-sidebar">
+          <div class="filter-header">
+            <h3 style="font-size: 18px; font-weight: 800; margin: 0;">Bộ lọc tìm kiếm</h3>
+            <a href="javascript:void(0)" id="clear-all-filters" style="font-size: 13px; color: var(--color-primary); font-weight: 600;">Xóa lọc</a>
+          </div>
+
+          <!-- Sort Filter -->
+          <div class="filter-group">
+            <div class="filter-title">Sắp xếp theo</div>
+            <select id="sort-select" class="form-select">
+              <option value="">Giờ cất cánh sớm nhất</option>
+              <option value="price_asc">Giá vé: Thấp đến Cao</option>
+              <option value="price_desc">Giá vé: Cao đến Thấp</option>
+            </select>
+          </div>
+
+          <!-- Direct Flights Filter -->
+          <div class="filter-group">
+            <div class="filter-title">Số điểm dừng</div>
+            <div class="filter-option">
+              <label>
+                <input type="checkbox" id="filter-direct-only">
+                <span>Chỉ bay thẳng (0 điểm dừng)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Airlines Filter -->
+          <div class="filter-group">
+            <div class="filter-title">Hãng hàng không</div>
+            <div id="filter-airlines-list">
+              <!-- Dynamically populated -->
+              <div style="font-size: 13px; color: var(--color-muted);">Đang tải hãng bay...</div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right Content: Flight Results -->
+        <section>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg); background: var(--color-surface); padding: var(--spacing-md) var(--spacing-lg); border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+            <div>
+              <h1 id="search-summary-title" style="font-size: 20px; font-weight: 800; margin: 0;">Chuyến bay có sẵn</h1>
+              <div style="font-size: 13px; color: var(--color-muted); margin-top: 2px;">Dữ liệu mẫu từ tệp cơ sở dữ liệu SQLite</div>
+            </div>
+            <span class="badge badge-red" id="results-count-badge">0 chuyến bay</span>
+          </div>
+
+          <!-- Flight List Container -->
+          <div id="flight-results-container">
+            <!-- Dynamically loaded -->
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Container -->
+  <div id="site-footer-container"></div>
+
+  <!-- Page Script -->
+  <script type="module" src="js/pages/flights.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <rect width="200" height="60" rx="8" fill="#F0F7FB"/>
+  <path d="M22 36 C22 26 32 20 40 24 C48 20 58 26 58 36 C48 34 40 38 40 38 C40 38 32 34 22 36 Z" fill="#D4AF37"/>
+  <circle cx="40" cy="20" r="4" fill="#D4AF37"/>
+  <text x="68" y="32" font-family="'Inter', Arial, sans-serif" font-weight="800" font-size="14" fill="#004A7F">VIETNAM</text>
+  <text x="68" y="46" font-family="'Inter', Arial, sans-serif" font-weight="600" font-size="12" fill="#004A7F" letter-spacing="1">AIRLINES</text>
+</svg>

@@ -1,0 +1,164 @@
+/* ==========================================================================
+   Vietjet Travel Prototype - Responsive Styles
+   Conforms to 02_UI_UX_AND_DESIGN_SYSTEM.md
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Tablet (max-width: 1024px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .search-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .search-grid .btn-primary {
+    grid-column: span 2;
+  }
+  
+  .listing-layout {
+    grid-template-columns: 240px 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .flight-card-main {
+    grid-template-columns: 150px 1fr 150px;
+    gap: var(--spacing-md);
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile (max-width: 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 64px;
+  }
+
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+
+  .demo-banner {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+
+  /* Mobile Nav */
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background-color: #FFFFFF;
+    flex-direction: column;
+    padding: var(--spacing-lg);
+    gap: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-surface);
+  }
+  .nav-link.active::after {
+    display: none;
+  }
+
+  /* Search Panel on Mobile */
+  .search-panel {
+    margin-top: 0;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+  }
+
+  .search-grid {
+    grid-template-columns: 1fr;
+  }
+  .search-grid .btn-primary {
+    grid-column: span 1;
+  }
+
+  .search-radio-group {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Listings on Mobile */
+  .listing-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-sidebar {
+    position: static;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  /* Flight card stacked */
+  .flight-card-main {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .flight-airline-info {
+    justify-content: flex-start;
+  }
+
+  .flight-route-info {
+    padding: 0;
+  }
+
+  .flight-price-col {
+    align-items: flex-start;
+    border-top: 1px dashed var(--color-border);
+    padding-top: var(--spacing-md);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  /* Fare Cards */
+  .fare-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Cart Layout */
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-item-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-summary-box {
+    position: static;
+  }
+
+  /* Footer */
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ Hàng & Đặt Chỗ - Vietjet Travel</title>
+  <meta name="description" content="Xem lại các dịch vụ vé máy bay và tour đã chọn, nhập thông tin liên hệ và hoàn tất đặt chỗ demo.">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- SQLite WASM (SQL.js) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.12.0/sql-wasm.js"></script>
+</head>
+<body>
+  <!-- Header Container -->
+  <div id="site-header-container"></div>
+
+  <main class="page-section">
+    <div class="container">
+      <div style="margin-bottom: var(--spacing-xl);">
+        <h1 style="font-size: 28px; font-weight: 900; margin-bottom: 4px;">Giỏ hàng & Xác nhận đặt dịch vụ</h1>
+        <p style="color: var(--color-muted); font-size: 14px;">Xem lại thông tin và xác nhận hoàn tất đơn hàng demo của bạn.</p>
+      </div>
+
+      <div id="cart-content-container">
+        <div class="empty-state">
+          <div class="empty-desc">Đang tải thông tin giỏ hàng...</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Container -->
+  <div id="site-footer-container"></div>
+
+  <!-- Page Script -->
+  <script type="module" src="js/pages/cart.js"></script>
+</body>
+</html>
